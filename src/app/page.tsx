@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link"; // Linkコンポーネントを使う
+import Link from "next/link";
 
 const IndexPage = () => {
   const [companyName, setCompanyName] = useState("");
@@ -15,7 +15,6 @@ const IndexPage = () => {
 
   const [majorCategory, setMajorCategory] = useState("");
   const [middleCategory, setMiddleCategory] = useState("");
-  const [smallCategory, setSmallCategory] = useState("");
   const [selectedIndustries, setSelectedIndustries] = useState<string[]>([]);
 
   const [showMiddlePopup, setShowMiddlePopup] = useState(false);
@@ -42,7 +41,6 @@ const IndexPage = () => {
     setMajorCategory(category);
     setShowMiddlePopup(true);
     setMiddleCategory("");
-    setSmallCategory("");
   };
 
   const handleMiddleCategoryChange = (category: string) => {
@@ -91,8 +89,8 @@ const IndexPage = () => {
               <span className="text-gray-700">本社所在地</span>
               <input
                 type="text"
-                value={headOfficeLocation} // 新しいstate変数を作成
-                onChange={(e) => setHeadOfficeLocation(e.target.value)} // 更新関数
+                value={headOfficeLocation}
+                onChange={(e) => setHeadOfficeLocation(e.target.value)}
                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md"
                 placeholder="例: 東京都千代田区平河町"
               />
@@ -177,7 +175,6 @@ const IndexPage = () => {
             </ul>
           </div>
 
-          {/* 売上、EBITDAなどの入力フィールド */}
           <div>
             <label className="block mb-4">
               <span className="text-gray-700">売上（直近期, 百万円）</span>
@@ -257,16 +254,14 @@ const IndexPage = () => {
           </div>
         </div>
 
-        {/* Linkを使用してreportページに遷移 */}
         <Link
           href={{
             pathname: "/report",
-            query: { companyName: companyName || "株式会社サンプル" }, // クエリで対象会社名を渡す
+            query: { companyName: companyName || "株式会社サンプル" },
           }}
+          className="w-full bg-gray-800 text-white py-2 rounded-md hover:bg-gray-900 block text-center"
         >
-          <button className="w-full bg-gray-800 text-white py-2 rounded-md hover:bg-gray-900">
-            調査開始
-          </button>
+          調査開始
         </Link>
       </div>
     </div>

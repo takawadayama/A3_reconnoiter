@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 
 const ReportPage = () => {
   const searchParams = useSearchParams();
@@ -335,9 +336,11 @@ const ReportPage = () => {
         </table>
         </div>
 
-        <a href="/" className="w-full bg-gray-800 text-white py-2 rounded-md hover:bg-gray-900 mt-6 text-center block">
-          戻る
-        </a>
+        <Link href="/" legacyBehavior>
+          <a className="w-full bg-gray-800 text-white py-2 rounded-md hover:bg-gray-900 mt-6 text-center block">
+            戻る
+          </a>
+        </Link>
       </div>
     </div>
   );

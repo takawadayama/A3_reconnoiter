@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
-const ReportPage = () => {
+const ReportPageContent = () => {
   const searchParams = useSearchParams();
-  const companyName = searchParams.get("companyName") || "株式会社虎屋";
+  const companyName = searchParams ? searchParams.get("companyName") || "株式会社虎屋" : "株式会社虎屋";
 
   // アコーディオンの開閉状態管理
   const [isOpen1, setIsOpen1] = useState(false);
@@ -341,6 +341,14 @@ const ReportPage = () => {
         </Link>
       </div>
     </div>
+  );
+};
+
+const ReportPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ReportPageContent />
+    </Suspense>
   );
 };
 
